@@ -1,5 +1,5 @@
 # LSM6DSL
-STM32 library for interfacing with the LSM6DSL 6-axis sensor, capable of linear acceleration and gyroscopic measurements.
+STM32 driver for interfacing with the LSM6DSL 6-axis sensor, capable of linear acceleration and gyroscopic measurements.
 This library was designed for STM32L4 series microcontrollers using STM32CubeIDE.  
 
 ## Important notes
