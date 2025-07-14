@@ -30,7 +30,7 @@
 #define REG_GYRO_PITCH		0x24
 #define REG_GYRO_YAW		0x26
 
-// Sampling rates
+// Device modes
 typedef enum {
 	POWER_DOWN = 0,
 	FREQ_1P6 = 0b1011,	// 1.6 Hz -> only available for xl_rate, and only if IMU.xl_lowpower = true !
@@ -44,12 +44,13 @@ typedef enum {
 	FREQ_1660,			// 1.66 kHz
 	FREQ_3330,			// 3.33 kHz
 	FREQ_6660			// 6.66 kHz
-} freq;
+} IMU_Mode;
 
+// Properties to track for device
 typedef struct {
 	I2C_HandleTypeDef* pointer_i2c_handle;
-	freq xl_rate;
-	freq gyro_rate;
+	IMU_Mode xl_rate;
+	IMU_Mode gyro_rate;
 	bool xl_lowpower;
 	bool gyro_lowpower;
 	float xl_sens;
@@ -59,27 +60,27 @@ typedef struct {
 } IMU;
 
 // Main functions
-IMU IMU_Init(I2C_HandleTypeDef *hi2c, uint32_t i2c_timeout);
-bool IMU_IsConnected(IMU sensor);
-int XL_SetSamplingRate(IMU sensor, freq rate);
-int XL_LowPower_Enable(IMU sensor);
-int XL_LowPower_Disable(IMU sensor);
-float XL_GetX(IMU sensor);
-float XL_GetY(IMU sensor);
-float XL_GetZ(IMU sensor);
-int Gyro_SetSamplingRate(IMU sensor, freq rate);
-int Gyro_LowPower_Enable(IMU sensor);
-int Gyro_LowPower_Disable(IMU sensor);
-float Gyro_GetRoll(IMU sensor);
-float Gyro_GetPitch(IMU sensor);
-float Gyro_GetYaw(IMU sensor);
-int IMU_Reset(IMU sensor);
+IMU* IMU_Init(I2C_HandleTypeDef *hi2c, uint32_t i2c_timeout);
+bool IMU_IsConnected(IMU *sensor);
+HAL_StatusTypeDef XL_SetSamplingRate(IMU *sensor, IMU_Mode rate);
+HAL_StatusTypeDef XL_LowPower_Enable(IMU *sensor);
+HAL_StatusTypeDef XL_LowPower_Disable(IMU *sensor);
+float XL_GetX(const IMU *sensor);
+float XL_GetY(const IMU *sensor);
+float XL_GetZ(const IMU *sensor);
+HAL_StatusTypeDef Gyro_SetSamplingRate(IMU *sensor, IMU_Mode rate);
+HAL_StatusTypeDef Gyro_LowPower_Enable(IMU *sensor);
+HAL_StatusTypeDef Gyro_LowPower_Disable(IMU *sensor);
+float Gyro_GetRoll(const IMU *sensor);
+float Gyro_GetPitch(const IMU *sensor);
+float Gyro_GetYaw(const IMU *sensor);
+HAL_StatusTypeDef IMU_Reset(IMU *sensor);
 // TBD: Set XL full-scale
 // TBD: Set Gyro full-scale
 
 // Helper functions
-int I2C_SetBit(I2C_HandleTypeDef *hi2c, uint16_t dev_addr, uint8_t reg_addr,
+HAL_StatusTypeDef I2C_SetBit(I2C_HandleTypeDef *hi2c, uint16_t dev_addr, uint8_t reg_addr,
 		uint8_t bit_pos, bool enable, uint32_t timeout);
-int16_t ReadTwoBytes(IMU sensor, uint8_t reg, uint32_t timeout);
+int16_t ReadTwoBytes(const IMU *sensor, uint8_t reg, uint32_t timeout);
 
 #endif /* INC_IMU_H_ */
