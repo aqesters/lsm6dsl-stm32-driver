@@ -26,9 +26,9 @@
 #define REG_XL_X			0x28
 #define REG_XL_Y			0x2A
 #define REG_XL_Z			0x2C
-#define REG_GYRO_ROLL		0x22
-#define REG_GYRO_PITCH		0x24
-#define REG_GYRO_YAW		0x26
+#define REG_GYRO_X		0x22
+#define REG_GYRO_Y		0x24
+#define REG_GYRO_Z		0x26
 
 // Device modes
 typedef enum {
@@ -65,15 +65,15 @@ bool IMU_IsConnected(IMU *sensor);
 HAL_StatusTypeDef XL_SetSamplingRate(IMU *sensor, IMU_Mode rate);
 HAL_StatusTypeDef XL_LowPower_Enable(IMU *sensor);
 HAL_StatusTypeDef XL_LowPower_Disable(IMU *sensor);
-float XL_GetX(const IMU *sensor);
-float XL_GetY(const IMU *sensor);
-float XL_GetZ(const IMU *sensor);
+float XL_AccelX(const IMU *sensor);
+float XL_AccelY(const IMU *sensor);
+float XL_AccelZ(const IMU *sensor);
 HAL_StatusTypeDef Gyro_SetSamplingRate(IMU *sensor, IMU_Mode rate);
 HAL_StatusTypeDef Gyro_LowPower_Enable(IMU *sensor);
 HAL_StatusTypeDef Gyro_LowPower_Disable(IMU *sensor);
-float Gyro_GetRoll(const IMU *sensor);
-float Gyro_GetPitch(const IMU *sensor);
-float Gyro_GetYaw(const IMU *sensor);
+float Gyro_AngularRateX(const IMU *sensor);
+float Gyro_AngularRateY(const IMU *sensor);
+float Gyro_AngularRateZ(const IMU *sensor);
 HAL_StatusTypeDef IMU_Reset(IMU *sensor);
 // TBD: Set XL full-scale
 // TBD: Set Gyro full-scale
