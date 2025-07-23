@@ -30,12 +30,12 @@ Gyro_LowPower_Enable(pSensor);
 
 After configuration, measurements are obtained using the following functions. Acceleration outputs are in terms of g-force (e.g., 0.5g). Gyroscope outputs are in degrees per second.
 ``` c
-float ACCEL_X = XL_GetX(pSensor);        // acceleration along X
-float ACCEL_Y = XL_GetY(pSensor);        // acceleration along Y
-float ACCEL_Z = XL_GetZ(pSensor);        // acceleration along Z
-float GYRO_R = Gyro_GetRoll(pSensor);    // rotational velocity about X-axis
-float GYRO_P = Gyro_GetPitch(pSensor);   // rotational velocity about Y-axis
-float GYRO_Y = Gyro_GetYaw(pSensor);     // rotational velocity about Z-axis
+float ACCEL_X = XL_AccelX(pSensor);            // acceleration along X
+float ACCEL_Y = XL_AccelY(pSensor);            // acceleration along Y
+float ACCEL_Z = XL_AccelZ(pSensor);            // acceleration along Z
+float GYRO_R = Gyro_AngularRateX(pSensor);     // rotational velocity about X-axis
+float GYRO_P = Gyro_AngularRateY(pSensor);     // rotational velocity about Y-axis
+float GYRO_Y = Gyro_AngularRateZ(pSensor);     // rotational velocity about Z-axis
 ```
 
 By default, the full-scale range for the accelerometer is +/-2g, and the full-scale range for the gyroscope is +/-250 degrees per second.
