@@ -133,21 +133,21 @@ HAL_StatusTypeDef XL_LowPower_Disable(IMU *sensor)
 * @brief Get accelerometer measurements from IMU
 * @param sensor		IMU instance of sensor
 * @param timeout 	I2C timeout value in milliseconds
-* @retval			Linear acceleration along axis in terms of "g"
+* @retval		Linear acceleration along axis in terms of "g"
 */
-float XL_GetX(const IMU *sensor)
+float XL_AccelX(const IMU *sensor)
 {
 	int16_t bitval = ReadTwoBytes(sensor, REG_XL_X, sensor->i2c_timeout);
 	return (float) bitval * sensor->xl_sens;  // Convert to units of "g"
 }
 
-float XL_GetY(const IMU *sensor)
+float XL_AccelY(const IMU *sensor)
 {
 	int16_t bitval = ReadTwoBytes(sensor, REG_XL_Y, sensor->i2c_timeout);
 	return (float) bitval * sensor->xl_sens;  // Convert to units of "g"
 }
 
-float XL_GetZ(const IMU *sensor)
+float XL_AccelZ(const IMU *sensor)
 {
 	int16_t bitval = ReadTwoBytes(sensor, REG_XL_Z, sensor->i2c_timeout);
 	return (float) bitval * sensor->xl_sens;  // Convert to units of "g"
@@ -225,23 +225,23 @@ HAL_StatusTypeDef Gyro_LowPower_Disable(IMU *sensor)
 * @brief Get gyroscope measurements from IMU
 * @param sensor		IMU instance of sensor
 * @param timeout 	I2C timeout value in milliseconds
-* @retval			Angular velocity [degrees per second] about specified axis
+* @retval		Angular velocity [degrees per second] about specified axis
 */
-float Gyro_GetRoll(const IMU *sensor)
+float Gyro_AngularRateX(const IMU *sensor)
 {
-	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_ROLL, sensor->i2c_timeout);
+	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_X, sensor->i2c_timeout);
 	return (float) bitval * sensor->gyro_sens;  // Convert to degrees per second
 }
 
-float Gyro_GetPitch(const IMU *sensor)
+float Gyro_AngularRateY(const IMU *sensor)
 {
-	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_PITCH, sensor->i2c_timeout);
+	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_Y, sensor->i2c_timeout);
 	return (float) bitval * sensor->gyro_sens;  // Convert to degrees per second
 }
 
-float Gyro_GetYaw(const IMU *sensor)
+float Gyro_AngularRateZ(const IMU *sensor)
 {
-	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_YAW, sensor->i2c_timeout);
+	int16_t bitval = ReadTwoBytes(sensor, REG_GYRO_Z, sensor->i2c_timeout);
 	return (float) bitval * sensor->gyro_sens;  // Convert to degrees per second
 }
 
