@@ -33,9 +33,9 @@ After configuration, measurements are obtained using the following functions. Ac
 float ACCEL_X = XL_AccelX(pSensor);            // acceleration along X
 float ACCEL_Y = XL_AccelY(pSensor);            // acceleration along Y
 float ACCEL_Z = XL_AccelZ(pSensor);            // acceleration along Z
-float GYRO_R = Gyro_AngularRateX(pSensor);     // rotational velocity about X-axis
-float GYRO_P = Gyro_AngularRateY(pSensor);     // rotational velocity about Y-axis
-float GYRO_Y = Gyro_AngularRateZ(pSensor);     // rotational velocity about Z-axis
+float GYRO_X = Gyro_AngularRateX(pSensor);     // rotational velocity about X-axis
+float GYRO_Y = Gyro_AngularRateY(pSensor);     // rotational velocity about Y-axis
+float GYRO_Z = Gyro_AngularRateZ(pSensor);     // rotational velocity about Z-axis
 ```
 
 By default, the full-scale range for the accelerometer is +/-2g, and the full-scale range for the gyroscope is +/-250 degrees per second.
