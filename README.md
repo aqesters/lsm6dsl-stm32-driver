@@ -1,6 +1,6 @@
 # LSM6DSL
-STM32 driver for interfacing with the LSM6DSL 6-axis sensor, capable of linear acceleration and gyroscopic measurements.
-This library was designed for STM32L4 series microcontrollers using STM32Cube.  
+Firmware for controlling an LSM6DSL 6-axis IMU sensor using an STM32 microcontroller.
+Note: This library was developed using an STM32L4 series microcontroller and the STM32Cube IDE.  
 
 ## Important notes
 (1) `imu.h` and `imu.c` were designed using STM32L4 I2C HAL drivers in STM32Cube. 
